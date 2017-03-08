@@ -36,6 +36,7 @@ class LinkedList {
   public void delete(int data) {
     if (head.data == data) {
       head = head.next;
+      return;
     }
     Node current = head;
     while (current.next != null) {
@@ -58,7 +59,7 @@ class LinkedList {
     
     linkedList.printAll();
     
-    linkedList.delete(2);
+    linkedList.delete(1);
     
     linkedList.printAll();
   }
