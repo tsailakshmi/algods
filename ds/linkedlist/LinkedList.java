@@ -83,8 +83,8 @@ class LinkedList {
     LinkedList linkedList = new LinkedList();
     
     int[] elements = {1, 2, 3, 4};
-    for (int i = 0; i < elements.length; i++) {
-      linkedList.append(elements[i]); 
+    for (int element: elements) {
+      linkedList.append(element); 
     }    
     
     System.out.println("Elements in linked list:");
