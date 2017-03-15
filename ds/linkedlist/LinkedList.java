@@ -53,6 +53,7 @@ class LinkedList {
         current.next = current.next.next;
         return;
       }
+      current = current.next;
     }
   }
   
@@ -78,7 +79,7 @@ class LinkedList {
     currentNode.next = null;
   }
   
-  public void reversePart(Node current, Node previousLastNode, int nodesToBeReversed,
+  public void reverseKNodes(Node current, Node previousLastNode, int nodesToBeReversed,
       boolean changeHead) {
     if (nodesToBeReversed == 0) {
       return;
@@ -88,7 +89,7 @@ class LinkedList {
     Node temp = null, previous = null, presentHead = current;
     while (current != null && count <= nodesToBeReversed) {
       temp = current.next;
-      if (changeHead && count < nodesToBeReversed) {
+      if (changeHead && temp != null && count < nodesToBeReversed) {
         head = temp;
       }
       current.next = previous;
@@ -100,7 +101,7 @@ class LinkedList {
       previousLastNode.next = previous;
     }
     if (current != null) {
-      reversePart(current, presentHead, nodesToBeReversed, false);
+      reverseKNodes(current, presentHead, nodesToBeReversed, false);
     }
   }
   
@@ -127,9 +128,8 @@ class LinkedList {
     System.out.println("Elements in linked list after reversing:");
     linkedList.printAll();
     
-    
     System.out.println("Elements in linked list after reversing (k = 2) nodes in pair:");
-    linkedList.reversePart(linkedList.head, null, 2, true);
+    linkedList.reverseKNodes(linkedList.head, null, 2, true);
     linkedList.printAll();
     
     System.out.println("Deleting 1 from linked list:");
